@@ -4,23 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pramila Singh | UI/UX Designer Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
- :root {
+    :root {
       --primary: #4361ee;
       --primary-dark: #3a0ca3;
       --primary-light: #4895ef;
       --secondary: #f72585;
-      --dark: #212529;
+      --accent: #4cc9f0;
+      --dark: #1a1a2e;
+      --darker: #16213e;
       --light: #f8f9fa;
       --gray: #6c757d;
       --light-gray: #e9ecef;
-      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-      --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
-      --shadow-lg: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
-      --shadow-xl: 0 15px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      --gradient-dark: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+      --shadow-lg: 0 15px 40px rgba(0,0,0,0.15);
+      --shadow-xl: 0 25px 50px rgba(0,0,0,0.2);
+      --border-radius: 16px;
+      --border-radius-lg: 24px;
     }
     
     * {
@@ -38,30 +44,80 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
       position: relative;
+      overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
+    /* Animated Background */
+    .bg-animation {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(247, 37, 133, 0.1) 100%);
       z-index: -1;
+      overflow: hidden;
+    }
+    
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(247, 37, 133, 0.1) 100%);
+      animation: float 20s infinite linear;
+    }
+    
+    .bg-circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    
+    .bg-circle:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      top: 60%;
+      left: 80%;
+      animation-delay: -5s;
+    }
+    
+    .bg-circle:nth-child(3) {
+      width: 400px;
+      height: 400px;
+      top: 30%;
+      left: 70%;
+      animation-delay: -10s;
+    }
+    
+    .bg-circle:nth-child(4) {
+      width: 250px;
+      height: 250px;
+      top: 80%;
+      left: 10%;
+      animation-delay: -15s;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
+      100% {
+        transform: translateY(0) rotate(360deg);
+      }
     }
 
+    /* Header Styles */
     header {
-      /* background: linear-gradient(rgba(58, 12, 163, 0.9), rgba(67, 97, 238, 0.9)), 
-                  url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover; */
-      background: linear-gradient(135deg, rgba(58, 12, 163, 0.95) 0%, rgba(67, 97, 238, 0.95) 100%);
+      background: var(--gradient-dark);
       color: white;
       text-align: center;
-      padding: 4rem 2rem 3rem;
-      box-shadow: var(--shadow-xl);
+      padding: 5rem 2rem 4rem;
+      box-shadow: var(--shadow-lg);
       position: relative;
       overflow: hidden;
       z-index: 1;
@@ -77,179 +133,60 @@
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd' opacity='0.1'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       z-index: -1;
     }
-/* Header Contact Links with Colorful Highlights */
-.header-contact-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1.5rem auto 2rem;
-  padding: 0 1rem;
-}
-
-.contact-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid transparent;
-}
-
-.contact-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: 0.5s;
-}
-
-.contact-link:hover::before {
-  left: 100%;
-}
-
-/* Phone Link - Green */
-.phone-link {
-  background: rgba(40, 167, 69, 0.2);
-  border-color: rgba(40, 167, 69, 0.3);
-}
-
-.phone-link:hover {
-  background: rgba(40, 167, 69, 0.4);
-  box-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
-}
-
-/* Email Link - Red/Pink */
-.email-link {
-  background: rgba(220, 53, 69, 0.2);
-  border-color: rgba(220, 53, 69, 0.3);
-}
-
-.email-link:hover {
-  background: rgba(220, 53, 69, 0.4);
-  box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
-}
-
-/* LinkedIn Link - Blue */
-.linkedin-link {
-  background: rgba(13, 110, 253, 0.2);
-  border-color: rgba(13, 110, 253, 0.3);
-}
-
-.linkedin-link:hover {
-  background: rgba(13, 110, 253, 0.4);
-  box-shadow: 0 0 10px rgba(13, 110, 253, 0.4);
-}
-
-/* Animation Effects */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.contact-link:hover {
-  animation: pulse 0.5s ease;
-  transform: translateY(-3px);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .header-contact-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  
-  .contact-link {
-    width: 100%;
-    justify-content: center;
-    padding: 0.7rem 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-contact-links {
-    margin: 1rem auto 1.5rem;
-  }
-  
-  .contact-link {
-    font-size: 0.85rem;
-  }
-}
-    /* Rest of your existing CSS remains the same */
     
-    /* Add this new class for section backgrounds */
-    .section-bg {
+    .profile-container {
       position: relative;
-      overflow: hidden;
+      display: inline-block;
+      margin-bottom: 2rem;
     }
     
-    .section-bg::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop') center/cover;
-      opacity: 0.1;
-      z-index: -1;
-    }
-    
-    /* Update your section style to include the background */
-    section {
-      padding: 3.5rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto 2.5rem;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 12px;
-      box-shadow: var(--shadow-md);
-      backdrop-filter: blur(5px);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      position: relative;
-    }
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid rgba(255, 255, 255, 0.9);
-      margin-bottom: 1.5rem;
+      border: 5px solid rgba(255, 255, 255, 0.9);
       box-shadow: var(--shadow-lg);
       transition: var(--transition);
+      position: relative;
+      z-index: 2;
     }
     
     .profile-img:hover {
-      transform: scale(1.05) rotate(5deg);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .profile-container::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: var(--gradient);
+      z-index: 1;
+      opacity: 0.7;
+      animation: rotate 10s linear infinite;
+    }
+    
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 3.5rem;
+      font-weight: 800;
       margin-bottom: 0.5rem;
       letter-spacing: 1px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
 
     header p {
-      font-size: 1.25rem;
+      font-size: 1.4rem;
       font-weight: 400;
       opacity: 0.9;
       max-width: 700px;
@@ -270,6 +207,94 @@
       border-radius: 3px;
     }
 
+    /* Header Contact Links */
+    .header-contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem auto 2.5rem;
+      padding: 0 1rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+    }
+
+    .contact-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .contact-link:hover::before {
+      left: 100%;
+    }
+
+    /* Phone Link - Green */
+    .phone-link {
+      background: rgba(40, 167, 69, 0.2);
+      border-color: rgba(40, 167, 69, 0.3);
+    }
+
+    .phone-link:hover {
+      background: rgba(40, 167, 69, 0.4);
+      box-shadow: 0 0 15px rgba(40, 167, 69, 0.4);
+    }
+
+    /* Email Link - Red/Pink */
+    .email-link {
+      background: rgba(220, 53, 69, 0.2);
+      border-color: rgba(220, 53, 69, 0.3);
+    }
+
+    .email-link:hover {
+      background: rgba(220, 53, 69, 0.4);
+      box-shadow: 0 0 15px rgba(220, 53, 69, 0.4);
+    }
+
+    /* LinkedIn Link - Blue */
+    .linkedin-link {
+      background: rgba(13, 110, 253, 0.2);
+      border-color: rgba(13, 110, 253, 0.3);
+    }
+
+    .linkedin-link:hover {
+      background: rgba(13, 110, 253, 0.4);
+      box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+    }
+
+    /* Animation Effects */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .contact-link:hover {
+      animation: pulse 0.5s ease;
+      transform: translateY(-3px);
+    }
+
+    /* Navigation */
     nav {
       margin-top: 2.5rem;
       display: flex;
@@ -283,7 +308,7 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
-      padding: 0.6rem 1.5rem;
+      padding: 0.8rem 1.8rem;
       border-radius: 50px;
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(5px);
@@ -291,6 +316,8 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
     }
     
     nav a i {
@@ -301,8 +328,8 @@
     nav a:focus {
       background: white;
       color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
     
     nav a.active {
@@ -310,23 +337,35 @@
       color: var(--primary-dark);
     }
 
+    /* Main Content */
     main {
       flex: 1;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
     }
 
     section {
-      padding: 3.5rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto 2.5rem;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 12px;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      background: white;
+      border-radius: var(--border-radius-lg);
       box-shadow: var(--shadow-md);
-      backdrop-filter: blur(5px);
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.6s ease, transform 0.6s ease;
       border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
     }
     
     section:last-child {
@@ -341,8 +380,8 @@
     h2 {
       color: var(--primary-dark);
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 2.5rem;
       padding-bottom: 0.5rem;
       font-weight: 700;
       position: relative;
@@ -356,12 +395,12 @@
       left: 0;
       width: 60%;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background: var(--gradient);
       border-radius: 2px;
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: var(--primary);
       margin-bottom: 1rem;
       font-weight: 600;
@@ -376,7 +415,7 @@
     }
 
     h4 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--primary-dark);
       margin: 1.5rem 0 0.8rem;
       font-weight: 600;
@@ -385,48 +424,291 @@
     p {
       margin-bottom: 1.2rem;
       color: var(--dark);
+      font-size: 1.1rem;
     }
     
+    /* About Section */
+    #about {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    #about::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234361ee" opacity="0.1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') no-repeat;
+      background-size: contain;
+      z-index: 0;
+    }
+    
+    .about-content {
+      z-index: 1;
+    }
+    
+    .about-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .design-elements {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .design-element {
+      background: var(--gradient);
+      height: 120px;
+      border-radius: var(--border-radius);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      transition: var(--transition);
+    }
+    
+    .design-element:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* Skills Section */
+    #skills {
+      position: relative;
+    }
+    
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .skill-category {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid rgba(233, 236, 239, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .skill-category h4 {
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .skill-category h4 i {
+      color: var(--secondary);
+    }
+    
+    .skill-bar {
+      height: 8px;
+      background: var(--light-gray);
+      border-radius: 4px;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 4px;
+      width: 0;
+      transition: width 1s ease-in-out;
+    }
+    
+    /* Experience Section */
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+      margin-top: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      height: 100%;
+      width: 3px;
+      background: var(--gradient);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 30px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 4px solid white;
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    .timeline-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-header h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+
+    .timeline-date {
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 500;
+      background: var(--light-gray);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      color: var(--gray);
+      margin-top: 0.3rem;
+    }
+
+    .timeline-content ul {
+      padding-left: 1.2rem;
+    }
+
+    .timeline-content li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .timeline-content li::before {
+      content: '▹';
+      position: absolute;
+      left: -1rem;
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    .projects-highlight {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--light-gray);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .project-tags span {
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--primary-dark);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .project-tags span:hover {
+      background: rgba(67, 97, 238, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Projects Section */
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
       margin-top: 2rem;
     }
 
     .project {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
+      background: white;
+      border-radius: var(--border-radius);
       overflow: hidden;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       border: 1px solid var(--light-gray);
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+    
+    .project::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
     }
     
     .project:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
-      background: white;
     }
     
     .project-content {
-      padding: 1.5rem;
+      padding: 2rem;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
     
     .project-title {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
       color: var(--primary-dark);
     }
     
     .project-links {
       margin-top: auto;
-      padding-top: 1rem;
+      padding-top: 1.5rem;
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
@@ -435,12 +717,12 @@
     .project-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 1rem;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
       background: var(--primary);
       color: white;
       border-radius: 50px;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 500;
       text-decoration: none;
       transition: var(--transition);
@@ -456,133 +738,167 @@
       font-size: 0.8rem;
     }
     
-    .skills-container {
+    /* Education Section */
+    .education-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
-    
-    .skill-category {
-      background: rgba(248, 249, 250, 0.8);
-      padding: 1.5rem;
-      border-radius: 8px;
+
+    .education-item {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       border: 1px solid rgba(233, 236, 239, 0.5);
+      position: relative;
+      overflow: hidden;
     }
-    
-    .skill-category:hover {
-      background: white;
-      transform: translateY(-3px);
+
+    .education-item:hover {
+      transform: translateY(-5px);
       box-shadow: var(--shadow-md);
     }
-    
-    .skill-category h4 {
-      margin-top: 0;
+
+    .education-item h3 {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+
+    .education-item h3 i {
+      color: var(--secondary);
+      margin-right: 0.5rem;
+    }
+
+    .education-item h4 {
+      color: var(--gray);
+      font-weight: 500;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .education-item p {
+      margin: 0.5rem 0 0;
+      font-weight: 600;
       color: var(--primary);
     }
-    
-    .skill-category h4 i {
-      color: var(--secondary);
+
+    .education-date {
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 500;
+      background: var(--light-gray);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
     }
-    .education-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
 
-.education-item {
-  background: rgba(248, 249, 250, 0.8);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border: 1px solid rgba(233, 236, 239, 0.5);
-}
+    /* Training Section */
+    .training-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
 
-.education-item:hover {
-  background: white;
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
+    .training-item {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border-left: 4px solid var(--secondary);
+      position: relative;
+      overflow: hidden;
+    }
 
-.education-item h3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  color: var(--primary-dark);
-}
+    .training-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
 
-.education-item h3 i {
-  color: var(--secondary);
-  margin-right: 0.5rem;
-}
+    .training-header h3 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
 
-.education-item h4 {
-  color: var(--gray);
-  font-weight: 500;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
+    .training-date {
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 500;
+      background: var(--light-gray);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
 
-.education-item p {
-  margin: 0.5rem 0 0;
-  font-weight: 600;
-  color: var(--primary);
-}
+    .training-role {
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-top: 0.3rem;
+    }
 
-.education-date {
-  font-size: 0.9rem;
-  color: var(--gray);
-  font-weight: 500;
-}
+    .training-content ul {
+      padding-left: 1.2rem;
+      margin-top: 1rem;
+    }
 
-@media (max-width: 768px) {
-  .education-container {
-    grid-template-columns: 1fr;
-  }
-}
+    .training-content li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .training-content li::before {
+      content: '▹';
+      position: absolute;
+      left: -1rem;
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    /* Contact Section */
     .contact-info {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
       margin-top: 2rem;
     }
     
     .contact-card {
-      background: rgba(248, 249, 250, 0.8);
-      padding: 10px;
-      border-radius: 8px;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 1.5rem;
       transition: var(--transition);
       box-shadow: var(--shadow-sm);
       border: 1px solid rgba(233, 236, 239, 0.5);
     }
     
     .contact-card:hover {
-      background: white;
-      transform: translateY(-3px);
+      transform: translateY(-5px);
       box-shadow: var(--shadow-md);
     }
     
     .contact-icon {
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: var(--gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       flex-shrink: 0;
     }
     
@@ -591,14 +907,15 @@
     }
     
     .contact-label {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--gray);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
     }
     
     .contact-value {
       font-weight: 600;
       color: var(--primary-dark);
+      font-size: 1.1rem;
     }
     
     .contact-value a {
@@ -609,14 +926,14 @@
     
     .contact-value a:hover {
       color: var(--secondary);
-      text-decoration: underline;
     }
 
+    /* Footer */
     footer {
       text-align: center;
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      background: var(--gradient-dark);
       color: white;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       font-weight: 500;
       box-shadow: var(--shadow-xl);
       margin-top: auto;
@@ -628,12 +945,12 @@
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
     
     .social-link {
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       transition: var(--transition);
     }
     
@@ -653,21 +970,32 @@
     }
 
     /* Responsive */
+    @media (max-width: 1024px) {
+      #about {
+        grid-template-columns: 1fr;
+      }
+      
+      .design-elements {
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 2rem;
+      }
+    }
+    
     @media (max-width: 768px) {
       header h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
       
       header p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       
       h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       
       section {
-        padding: 2.5rem 1.5rem;
+        padding: 3rem 1.5rem;
       }
       
       .project-grid {
@@ -677,253 +1005,118 @@
       .skills-container {
         grid-template-columns: 1fr;
       }
+      
+      .education-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .training-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .timeline {
+        padding-left: 30px;
+      }
+      
+      .timeline::before {
+        left: 10px;
+      }
+      
+      .timeline-item::before {
+        left: -30px;
+      }
+      
+      .timeline-header h3 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .training-header h3 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .header-contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .contact-link {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .design-elements {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
     @media (max-width: 480px) {
       header {
-        padding: 3rem 1.5rem 2rem;
+        padding: 4rem 1.5rem 3rem;
       }
       
       header h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       
       .profile-img {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
       }
       
       nav a {
-        padding: 0.5rem 1rem;
+        padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
       }
       
       h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
       
       h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+      }
+      
+      .header-contact-links {
+        margin: 1.5rem auto 2rem;
+      }
+      
+      .contact-link {
+        font-size: 0.9rem;
+      }
+      
+      .design-elements {
+        grid-template-columns: 1fr;
       }
     }
 
-    /* Experience Timeline Styles */
-.timeline {
-  position: relative;
-  padding-left: 50px;
-  margin-top: 2rem;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 20px;
-  height: 100%;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--primary), var(--secondary));
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 2.5rem;
-  background: rgba(248, 249, 250, 0.8);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border-left: 3px solid var(--primary);
-}
-
-.timeline-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  background: white;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -40px;
-  top: 24px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--primary);
-  border: 3px solid white;
-  box-shadow: 0 0 0 3px var(--primary-light);
-}
-
-.timeline-header {
-  margin-bottom: 1rem;
-}
-
-.timeline-header h3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  color: var(--primary-dark);
-}
-
-.timeline-date {
-  font-size: 0.9rem;
-  color: var(--gray);
-  font-weight: 500;
-}
-
-.location {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--gray);
-  margin-top: 0.3rem;
-}
-
-.timeline-content ul {
-  padding-left: 1.2rem;
-}
-
-.timeline-content li {
-  margin-bottom: 0.8rem;
-  position: relative;
-}
-
-.timeline-content li::before {
-  content: '▹';
-  position: absolute;
-  left: -1rem;
-  color: var(--secondary);
-}
-
-.projects-highlight {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--light-gray);
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.8rem;
-}
-
-.project-tags span {
-  background: rgba(67, 97, 238, 0.1);
-  color: var(--primary-dark);
-  padding: 0.3rem 0.8rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .timeline {
-    padding-left: 30px;
-  }
-  
-  .timeline::before {
-    left: 10px;
-  }
-  
-  .timeline-item::before {
-    left: -30px;
-  }
-  
-  .timeline-header h3 {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
-  }
-}
-
-/* Training & Certificates Styles */
-.training-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.training-item {
-  background: rgba(248, 249, 250, 0.8);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border-left: 3px solid var(--secondary);
-}
-
-.training-item:hover {
-  background: white;
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.training-header h3 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  color: var(--primary-dark);
-}
-
-.training-date {
-  font-size: 0.9rem;
-  color: var(--gray);
-  font-weight: 500;
-}
-
-.training-role {
-  font-size: 0.95rem;
-  color: var(--primary);
-  font-weight: 600;
-  margin-top: 0.3rem;
-}
-
-.training-content ul {
-  padding-left: 1.2rem;
-  margin-top: 1rem;
-}
-
-.training-content li {
-  margin-bottom: 0.5rem;
-  position: relative;
-}
-
-.training-content li::before {
-  content: '▹';
-  position: absolute;
-  left: -1rem;
-  color: var(--secondary);
-}
-
-@media (max-width: 768px) {
-  .training-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .training-header h3 {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
-  }
-}
     .text-white{
       color:white;
     }
   </style>
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
 
   <header>
-    <img src="images/photo.jpg" alt="Pramila Singh" class="profile-img" />
+    <div class="profile-container">
+      <img src="images/photo.jpg" alt="Pramila Singh" class="profile-img" />
+    </div>
     <h1>Pramila Singh</h1>
     <p class="text-white">UI/UX Designer | Frontend Developer</p>
-     <!-- Contact Links -->
+    
+    <!-- Contact Links -->
     <div class="header-contact-links">
       <a href="tel:+919643484149" class="contact-link phone-link">
         <i class="fas fa-mobile-alt"></i> +91 9643484149
@@ -935,6 +1128,7 @@
         <i class="fab fa-linkedin-in"></i> LinkedIn
       </a>
     </div>
+    
     <nav>
       <a href="#about"><i class="fas fa-user"></i> About</a>
       <a href="#skills"><i class="fas fa-code"></i> Skills</a>
@@ -947,171 +1141,200 @@
   </header>
 
   <main>
-    <section id="about" class="section-bg">
-      <h2>About Me</h2>
-      <p>
-      I’m a creative and detail-oriented UI/UX Designer & Frontend Developer with over 8 years of experience transforming complex ideas into elegant, user-focused digital solutions. I specialize in building intuitive, responsive web applications that not only look beautiful but also deliver seamless user experiences across all devices.
-      </p>
-      <p>
-     With a strong command over HTML5, CSS3, Bootstrap, Tailwind CSS, JavaScript, and modern frameworks like Angular (v14–v19) and React.js, I bring interfaces to life with clean, maintainable code. On the backend, I’m proficient in java (Spring Boot), MVC, .NET (Frameworks Familiarity), ensuring robust and scalable application architecture.
-      </p>
-      <p>
-My design process is powered by tools like Figma and Axure RP, where I translate business goals into wireframes, prototypes, and visually compelling UI designs.
-      </p>
-      What sets me apart is my passion for the intersection of aesthetics and functionality. I believe that great design starts with empathy, and I follow user-centered design principles to craft experiences that are not only visually engaging but also accessible and impactful.
-      <p>
-      </p>
-      <p>
-        Whether I'm designing dashboards for enterprises or streamlining workflows in citizen-facing platforms, my goal is always the same: to simplify, inspire, and elevate the user journey.
-      </p>
+    <section id="about">
+      <div class="about-content">
+        <h2>About Me</h2>
+        <p>
+          I'm a creative and detail-oriented UI/UX Designer & Frontend Developer with over 8 years of experience transforming complex ideas into elegant, user-focused digital solutions. I specialize in building intuitive, responsive web applications that not only look beautiful but also deliver seamless user experiences across all devices.
+        </p>
+        <p>
+          With a strong command over HTML5, CSS3, Bootstrap, Tailwind CSS, JavaScript, and modern frameworks like Angular (v14–v19) and React.js, I bring interfaces to life with clean, maintainable code. On the backend, I'm proficient in Java (Spring Boot), MVC, .NET (Frameworks Familiarity), ensuring robust and scalable application architecture.
+        </p>
+        <p>
+          My design process is powered by tools like Figma and Axure RP, where I translate business goals into wireframes, prototypes, and visually compelling UI designs.
+        </p>
+        <p>
+          What sets me apart is my passion for the intersection of aesthetics and functionality. I believe that great design starts with empathy, and I follow user-centered design principles to craft experiences that are not only visually engaging but also accessible and impactful.
+        </p>
+        <p>
+          Whether I'm designing dashboards for enterprises or streamlining workflows in citizen-facing platforms, my goal is always the same: to simplify, inspire, and elevate the user journey.
+        </p>
+      </div>
+      <div class="about-visual">
+        <div class="design-elements">
+          <div class="design-element"><i class="fas fa-palette"></i></div>
+          <div class="design-element"><i class="fas fa-code"></i></div>
+          <div class="design-element"><i class="fas fa-mobile-alt"></i></div>
+          <div class="design-element"><i class="fas fa-users"></i></div>
+        </div>
+      </div>
     </section>
 
-    <section id="skills" class="section-bg">
+    <section id="skills">
       <h2>Technical Skills</h2>
       
       <div class="skills-container">
         <div class="skill-category">
           <h4><i class="fas fa-laptop-code"></i> Frontend</h4>
           <p>HTML5, CSS3, Bootstrap, JavaScript, LESS, SASS, Tailwind CSS, React.js, Angular (v14–v19), jQuery, Ajax</p>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="95"></div>
+          </div>
         </div>
         
         <div class="skill-category">
           <h4><i class="fas fa-server"></i> Backend</h4>
           <p>Java (Spring Boot), MVC, .NET (Frameworks Familiarity), REST APIs</p>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="80"></div>
+          </div>
         </div>
         
         <div class="skill-category">
           <h4><i class="fas fa-pencil-ruler"></i> Design Tools</h4>
           <p>Figma, Axure RP, Sketch</p>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="90"></div>
+          </div>
         </div>
         
         <div class="skill-category">
           <h4><i class="fas fa-tools"></i> Development Tools</h4>
-          <p>Visual Studio, VS Code, Eclipse,Sublime,Notepad++, Git, SVN, W3C Validator, Chrome DevTools</p>
+          <p>Visual Studio, VS Code, Eclipse, Sublime, Notepad++, Git, SVN, W3C Validator, Chrome DevTools</p>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="85"></div>
+          </div>
         </div>
         
         <div class="skill-category">
           <h4><i class="fas fa-object-group"></i> UI/UX Skills</h4>
           <p>Wireframing, Prototyping, Dashboard Design, Charts, Graphs, Datatable, Map, Data Visualization, Responsive Design, Accessibility, User Research</p>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="92"></div>
+          </div>
         </div>
         
         <div class="skill-category">
           <h4><i class="fas fa-file-alt"></i> Microsoft Office</h4>
           <p>MS Office, Excel, Access, Word, PowerPoint</p>
+          <div class="skill-bar">
+            <div class="skill-progress" data-width="88"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="experience" class="section-bg">
-  <h2>Professional Experience</h2>
-  
-  <div class="timeline">
-    <!-- Velocis Systems -->
-    <div class="timeline-item">
-      <div class="timeline-header">
-        <h3>
-          <i class="fas fa-briefcase"></i> UI/UX Developer (Team Lead)
-          <span class="timeline-date">Nov 2019 – Present</span>
-        </h3>
-        <h4>Velocis Systems Pvt. Ltd. (Client: NIC – Municipal Corporation of Delhi)</h4>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i> Civic Centre, New Delhi
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      
+      <div class="timeline">
+        <!-- Velocis Systems -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>
+              <i class="fas fa-briefcase"></i> UI/UX Developer (Team Lead)
+              <span class="timeline-date">Nov 2019 – Present</span>
+            </h3>
+            <h4>Velocis Systems Pvt. Ltd. (Client: NIC – Municipal Corporation of Delhi)</h4>
+            <div class="location">
+              <i class="fas fa-map-marker-alt"></i> Civic Centre, New Delhi
+            </div>
+          </div>
+          <div class="timeline-content">
+            <ul>
+              <li>Managed end-to-end UI/UX design for MCD's internal and citizen-facing web applications, including complex dashboards and interactive modules.</li>
+              <li>Designed and implemented responsive user interfaces using HTML5, CSS3, Bootstrap, Tailwind CSS, LESS, SASS, jQuery, React.js, and Angular (v14–v19).</li>
+              <li>Delivered high-fidelity wireframes, prototypes, and user flows using Figma, Axure RP, and Sketch.</li>
+              <li>Created intuitive dashboards, charts, graphs, and interactive data tables for municipal services.</li>
+              <li>Collaborated with backend developers (Java Spring Boot, .NET) for seamless API integration.</li>
+              <li>Applied UX best practices for usability, accessibility, and cross-browser compatibility.</li>
+              <li>Participated in Agile/Scrum processes and mentored junior team members.</li>
+            </ul>
+            
+            <div class="projects-highlight">
+              <h4><i class="fas fa-trophy"></i> Key Projects:</h4>
+              <div class="project-tags">
+                <span>Portal</span>
+                <span>PTR</span>
+                <span>RBD</span>
+                <span>CSD</span>
+                <span>GTL</span>
+                <span>FTL</span>
+                <span>VTL</span>
+                <span>TEHBAZARI</span>
+                <span>HAWAKING</span>
+                <span>SWM</span>
+                <span>eSBM Tracking</span>
+                <span>MCD Dashboard</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="timeline-content">
-        <ul>
-          <li>Managed end-to-end UI/UX design for MCD's internal and citizen-facing web applications, including complex dashboards and interactive modules.</li>
-          <li>Designed and implemented responsive user interfaces using HTML5, CSS3, Bootstrap, Tailwind CSS, LESS, SASS, jQuery, React.js, and Angular (v14–v19).</li>
-          <li>Delivered high-fidelity wireframes, prototypes, and user flows using Figma, Axure RP, and Sketch.</li>
-          <li>Created intuitive dashboards, charts, graphs, and interactive data tables for municipal services.</li>
-          <li>Collaborated with backend developers (Java Spring Boot, .NET) for seamless API integration.</li>
-          <li>Applied UX best practices for usability, accessibility, and cross-browser compatibility.</li>
-          <li>Participated in Agile/Scrum processes and mentored junior team members.</li>
-        </ul>
         
-        <div class="projects-highlight">
-          <h4><i class="fas fa-trophy"></i> Key Projects:</h4>
-          <div class="project-tags">
-            <span>Portal</span>
-            <span>PTR</span>
-            <span>RBD</span>
-            <span>CSD</span>
-            <span>GTL</span>
-            <span>FTL</span>
-            <span>VTL</span>
-            <span>TEHBAZARI</span>
-            <span>HAWAKING</span>
-            <span>SWM</span>
-            <span>eSBM Tracking</span>
-            <span>MCD Dashboard</span>
+        <!-- A-Paul Software -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>
+              <i class="fas fa-briefcase"></i> UI Designer
+              <span class="timeline-date">Mar 2018 – Nov 2019</span>
+            </h3>
+            <h4>A-Paul Software Systems Pvt. Ltd.</h4>
+            <div class="location">
+              <i class="fas fa-map-marker-alt"></i> South Delhi
+            </div>
+          </div>
+          <div class="timeline-content">
+            <ul>
+              <li>Created wireframes, prototypes, and user flows for major client projects.</li>
+              <li>Developed complex dashboards and visualizations (graphs, charts).</li>
+              <li>Ensured cross-browser compatibility and optimized applications for performance.</li>
+              <li>Collaborated with teams to create user-friendly web applications.</li>
+            </ul>
+            
+            <div class="projects-highlight">
+              <h4><i class="fas fa-trophy"></i> Key Projects:</h4>
+              <div class="project-tags">
+                <span>Infotainment System</span>
+                <span>Smart Coach Monitoring</span>
+                <span>OptiPlayPis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Edfora InfoTech -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>
+              <i class="fas fa-briefcase"></i> Software Engineer
+              <span class="timeline-date">Oct 2016 – Feb 2018</span>
+            </h3>
+            <h4>Edfora InfoTech Pvt. Ltd.</h4>
+            <div class="location">
+              <i class="fas fa-map-marker-alt"></i> Delhi
+            </div>
+          </div>
+          <div class="timeline-content">
+            <ul>
+              <li>Designed intuitive dashboards and features for myPAT, India's largest online learning platform.</li>
+              <li>Optimized the Content Management System (CMS) for better content delivery.</li>
+              <li>Built and maintained software solutions including Watson Dashboard.</li>
+            </ul>
+            
+            <div class="projects-highlight">
+              <h4><i class="fas fa-trophy"></i> Key Projects:</h4>
+              <div class="project-tags">
+                <span>myPAT</span>
+                <span>Watson Dashboard</span>
+                <span>CMS</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <!-- A-Paul Software -->
-    <div class="timeline-item">
-      <div class="timeline-header">
-        <h3>
-          <i class="fas fa-briefcase"></i> UI Designer
-          <span class="timeline-date">Mar 2018 – Nov 2019</span>
-        </h3>
-        <h4>A-Paul Software Systems Pvt. Ltd.</h4>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i> South Delhi
-        </div>
-      </div>
-      <div class="timeline-content">
-        <ul>
-          <li>Created wireframes, prototypes, and user flows for major client projects.</li>
-          <li>Developed complex dashboards and visualizations (graphs, charts).</li>
-          <li>Ensured cross-browser compatibility and optimized applications for performance.</li>
-          <li>Collaborated with teams to create user-friendly web applications.</li>
-        </ul>
-        
-        <div class="projects-highlight">
-          <h4><i class="fas fa-trophy"></i> Key Projects:</h4>
-          <div class="project-tags">
-            <span>Infotainment System</span>
-            <span>Smart Coach Monitoring</span>
-            <span>OptiPlayPis</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Edfora InfoTech -->
-    <div class="timeline-item">
-      <div class="timeline-header">
-        <h3>
-          <i class="fas fa-briefcase"></i> Software Engineer
-          <span class="timeline-date">Oct 2016 – Feb 2018</span>
-        </h3>
-        <h4>Edfora InfoTech Pvt. Ltd.</h4>
-        <div class="location">
-          <i class="fas fa-map-marker-alt"></i> Delhi
-        </div>
-      </div>
-      <div class="timeline-content">
-        <ul>
-          <li>Designed intuitive dashboards and features for myPAT, India's largest online learning platform.</li>
-          <li>Optimized the Content Management System (CMS) for better content delivery.</li>
-          <li>Built and maintained software solutions including Watson Dashboard.</li>
-        </ul>
-        
-        <div class="projects-highlight">
-          <h4><i class="fas fa-trophy"></i> Key Projects:</h4>
-          <div class="project-tags">
-            <span>myPAT</span>
-            <span>Watson Dashboard</span>
-            <span>CMS</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-    <section id="projects" class="section-bg">
+    </section>
+
+    <section id="projects">
       <h2>Featured Projects</h2>
       <p>Here are some of my most significant projects that showcase my skills in UI/UX design and frontend development:</p>
       
@@ -1124,9 +1347,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://mcdonline.nic.in/portal/mService" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1139,9 +1359,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://mcdonline.nic.in/rbd/web/citizen/info" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1154,9 +1371,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://mcdonline.nic.in/ptrmcd/web/citizen/info?loginActive=C&moduleCode=PTR" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1169,9 +1383,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://stag.mcdonline.nic.in/bms/web/citizen/landingPage" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1184,9 +1395,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://mcdonline.nic.in/ftlmcd/web/citizen/info" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1199,9 +1407,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://mcdonline.nic.in/esbm-mcd/loginForm" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1214,9 +1419,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://mcdonline.nic.in/portal/" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1229,9 +1431,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://mypat.in/" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1244,9 +1443,6 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://apaulsoftware.com/solutions/optiplay/" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
@@ -1259,15 +1455,13 @@ My design process is powered by tools like Figma and Axure RP, where I translate
               <a href="https://www.edfora.com/" target="_blank" class="project-link" rel="noopener">
                 <i class="fas fa-external-link-alt"></i> Live Website
               </a>
-              <!-- <a href="#" target="_blank" class="project-link" rel="noopener">
-                <i class="fas fa-palette"></i> View Design
-              </a> -->
             </div>
           </div>
         </div>
       </div>
     </section>
-    <section id="education" class="section-bg">
+
+    <section id="education">
       <h2>Education</h2>
       
       <div class="education-container">
@@ -1308,50 +1502,52 @@ My design process is powered by tools like Figma and Axure RP, where I translate
         </div>
       </div>
     </section>
-    <section id="training" class="section-bg">
-  <h2>Training & Certificates</h2>
-  
-  <div class="training-container">
-    <!-- CMC Ltd. -->
-    <div class="training-item">
-      <div class="training-header">
-        <h3>
-          <i class="fas fa-certificate"></i> CMC Ltd. Delhi
-          <span class="training-date">May 2014 – Aug 2014 | Jan 2015 – Aug 2015</span>
-        </h3>
+
+    <section id="training">
+      <h2>Training & Certificates</h2>
+      
+      <div class="training-container">
+        <!-- CMC Ltd. -->
+        <div class="training-item">
+          <div class="training-header">
+            <h3>
+              <i class="fas fa-certificate"></i> CMC Ltd. Delhi
+              <span class="training-date">May 2014 – Aug 2014 | Jan 2015 – Aug 2015</span>
+            </h3>
+          </div>
+          <div class="training-content">
+            <ul>
+              <li>Worked on E-Farming and Online Criminal Tracking System projects</li>
+              <li>Assisted in system design, coding, and testing</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Tech Venture -->
+        <div class="training-item">
+          <div class="training-header">
+            <h3>
+              <i class="fas fa-certificate"></i> Tech Venture Product myPAT (mypat.in) of FIITJEE LTD. Delhi
+              <span class="training-date">Jun 2016 – Sep 2016 (3 months)</span>
+            </h3>
+            <div class="training-role">Software Developer Trainee</div>
+          </div>
+        </div>
+        
+        <!-- USA UnivQuest -->
+        <div class="training-item">
+          <div class="training-header">
+            <h3>
+              <i class="fas fa-certificate"></i> USA UnivQuest
+              <span class="training-date">Mar 2016 – Jun 2016 (3 months)</span>
+            </h3>
+            <div class="training-role">Intern, Academic Operations</div>
+          </div>
+        </div>
       </div>
-      <div class="training-content">
-        <ul>
-          <li>Worked on E-Farming and Online Criminal Tracking System projects</li>
-          <li>Assisted in system design, coding, and testing</li>
-        </ul>
-      </div>
-    </div>
-    
-    <!-- Tech Venture -->
-    <div class="training-item">
-      <div class="training-header">
-        <h3>
-          <i class="fas fa-certificate"></i> Tech Venture Product myPAT (mypat.in) of FIITJEE LTD. Delhi
-          <span class="training-date">Jun 2016 – Sep 2016 (3 months)</span>
-        </h3>
-        <div class="training-role">Software Developer Trainee</div>
-      </div>
-    </div>
-    
-    <!-- USA UnivQuest -->
-    <div class="training-item">
-      <div class="training-header">
-        <h3>
-          <i class="fas fa-certificate"></i> USA UnivQuest
-          <span class="training-date">Mar 2016 – Jun 2016 (3 months)</span>
-        </h3>
-        <div class="training-role">Intern, Academic Operations</div>
-      </div>
-    </div>
-  </div>
-</section>
-    <section id="contact" class="section-bg">
+    </section>
+
+    <section id="contact">
       <h2>Get In Touch</h2>
       <p>Feel free to reach out for collaborations or just to say hello!</p>
       
@@ -1393,22 +1589,8 @@ My design process is powered by tools like Figma and Axure RP, where I translate
     </section>
   </main>
 
-  <footer >
+  <footer>
     <p class="text-white">&copy; 2025 Pramila Singh. All rights reserved.</p>
-    <!-- <div class="social-links">
-      <a href="https://github.com/yourusername" class="social-link" target="_blank" rel="noopener">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://dribbble.com/yourusername" class="social-link" target="_blank" rel="noopener">
-        <i class="fab fa-dribbble"></i>
-      </a>
-      <a href="https://www.behance.net/yourusername" class="social-link" target="_blank" rel="noopener">
-        <i class="fab fa-behance"></i>
-      </a>
-      <a href="https://twitter.com/yourusername" class="social-link" target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </div> -->
   </footer>
 
   <script>
@@ -1417,6 +1599,17 @@ My design process is powered by tools like Figma and Axure RP, where I translate
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          
+          // Animate skill bars when skills section is visible
+          if (entry.target.id === 'skills') {
+            const skillBars = entry.target.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+              const width = bar.getAttribute('data-width');
+              setTimeout(() => {
+                bar.style.width = width + '%';
+              }, 200);
+            });
+          }
         }
       });
     }, { threshold: 0.1 });
