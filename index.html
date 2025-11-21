@@ -137,6 +137,49 @@
       z-index: -1;
     }
     
+    /* Header Shapes */
+    .header-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: pulse 8s infinite ease-in-out;
+    }
+    
+    .header-shape-1 {
+      width: 150px;
+      height: 150px;
+      top: -50px;
+      left: -50px;
+      animation-delay: 0s;
+    }
+    
+    .header-shape-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      right: -50px;
+      animation-delay: -2s;
+    }
+    
+    .header-shape-3 {
+      width: 100px;
+      height: 100px;
+      top: 30%;
+      right: 20%;
+      animation-delay: -4s;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.4;
+      }
+    }
+    
     .profile-container {
       position: relative;
       display: inline-block;
@@ -397,10 +440,6 @@
     /* About Section */
     #about {
       position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
     }
     
     #about::after {
@@ -417,36 +456,6 @@
     
     .about-content {
       z-index: 1;
-    }
-    
-    .about-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .design-elements {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    
-    .design-element {
-      background: var(--gradient);
-      height: 120px;
-      border-radius: var(--border-radius);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 2rem;
-      transition: var(--transition);
-      box-shadow: var(--shadow-md);
-    }
-    
-    .design-element:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: var(--shadow-lg);
     }
     
     /* Skills Section */
@@ -899,16 +908,17 @@
     /* Footer */
     footer {
       text-align: center;
-      background: linear-gradient(135deg, rgba(30, 29, 63, 0.9) 0%, rgba(45, 43, 85, 0.9) 100%);
+      background: linear-gradient(135deg, rgba(30, 29, 63, 0.95) 0%, rgba(45, 43, 85, 0.9) 100%);
       backdrop-filter: blur(10px);
       color: white;
-      padding: 3rem 1rem;
+      padding: 4rem 1rem;
       font-weight: 500;
       box-shadow: var(--shadow-xl);
       margin-top: auto;
       position: relative;
       z-index: 1;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
     }
     
     footer::before {
@@ -922,22 +932,111 @@
       z-index: -1;
     }
     
+    /* Footer Shapes */
+    .footer-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      animation: pulse 8s infinite ease-in-out;
+    }
+    
+    .footer-shape-1 {
+      width: 120px;
+      height: 120px;
+      top: -30px;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .footer-shape-2 {
+      width: 80px;
+      height: 80px;
+      bottom: 20px;
+      right: 15%;
+      animation-delay: -3s;
+    }
+    
+    .footer-shape-3 {
+      width: 60px;
+      height: 60px;
+      top: 40%;
+      left: 5%;
+      animation-delay: -6s;
+    }
+    
+    .footer-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #8B85FF 0%, #36D1DC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .footer-tagline {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
     .social-links {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
     
     .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.7);
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .social-link:hover::before {
+      left: 100%;
     }
     
     .social-link:hover {
       color: white;
-      transform: translateY(-3px);
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .copyright {
+      margin-top: 2.5rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
     }
 
     /* Animations */
@@ -954,11 +1053,6 @@
     @media (max-width: 1024px) {
       #about {
         grid-template-columns: 1fr;
-      }
-      
-      .design-elements {
-        grid-template-columns: repeat(4, 1fr);
-        margin-top: 2rem;
       }
     }
     
@@ -1030,10 +1124,6 @@
         justify-content: center;
         padding: 0.8rem 1.5rem;
       }
-      
-      .design-elements {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
     
     @media (max-width: 480px) {
@@ -1070,10 +1160,6 @@
       .contact-link {
         font-size: 0.9rem;
       }
-      
-      .design-elements {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -1087,6 +1173,11 @@
   </div>
 
   <header>
+    <!-- Header Shapes -->
+    <div class="header-shape header-shape-1"></div>
+    <div class="header-shape header-shape-2"></div>
+    <div class="header-shape header-shape-3"></div>
+    
     <div class="profile-container">
       <img src="images/photo.jpg" alt="Pramila Singh" class="profile-img" />
     </div>
@@ -1136,14 +1227,6 @@
         <p>
           Whether I'm designing dashboards for enterprises or streamlining workflows in citizen-facing platforms, my goal is always the same: to simplify, inspire, and elevate the user journey.
         </p>
-      </div>
-      <div class="about-visual">
-        <div class="design-elements">
-          <div class="design-element"><i class="fas fa-palette"></i></div>
-          <div class="design-element"><i class="fas fa-code"></i></div>
-          <div class="design-element"><i class="fas fa-mobile-alt"></i></div>
-          <div class="design-element"><i class="fas fa-users"></i></div>
-        </div>
       </div>
     </section>
 
@@ -1316,6 +1399,31 @@
       <p>Here are some of my most significant projects that showcase my skills in UI/UX design and frontend development:</p>
       
       <div class="project-grid">
+        <!-- New Angular Projects -->
+        <div class="project">
+          <div class="project-content">
+            <h3 class="project-title">SWAGAM Portal</h3>
+            <p>Developed a comprehensive portal for MCD service applications using Angular framework. The portal integrates various municipal services including property tax, birth/death certificates, trade licenses, and more into a unified platform.</p>
+            <div class="project-links">
+              <a href="https://mcdonline.nic.in/swagam/" target="_blank" class="project-link" rel="noopener">
+                <i class="fas fa-external-link-alt"></i> Live Website
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project">
+          <div class="project-content">
+            <h3 class="project-title">Online Building Permission System (OBPS)</h3>
+            <p>Built an end-to-end digital platform for building plan approvals using Angular. The system streamlines the entire process from application submission to approval, reducing processing time by 70%.</p>
+            <div class="project-links">
+              <a href="https://mcdonline.nic.in/obps/" target="_blank" class="project-link" rel="noopener">
+                <i class="fas fa-external-link-alt"></i> Live Website
+              </a>
+            </div>
+          </div>
+        </div>
+        
         <div class="project">
           <div class="project-content">
             <h3 class="project-title">MCD Online Services Dashboard</h3>
@@ -1567,17 +1675,34 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Pramila Singh. All rights reserved.</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/parmila-singh-013906112/" target="_blank" class="social-link">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="mailto:parmilasingh123@gmail.com" class="social-link">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="tel:+919643484149" class="social-link">
-        <i class="fas fa-phone-alt"></i>
-      </a>
+    <!-- Footer Shapes -->
+    <div class="footer-shape footer-shape-1"></div>
+    <div class="footer-shape footer-shape-2"></div>
+    <div class="footer-shape footer-shape-3"></div>
+    
+    <div class="footer-content">
+      <div class="footer-logo">Pramila Singh</div>
+      <p class="footer-tagline">Crafting beautiful, intuitive digital experiences that users love</p>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/parmila-singh-013906112/" target="_blank" class="social-link">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:parmilasingh123@gmail.com" class="social-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+919643484149" class="social-link">
+          <i class="fas fa-phone-alt"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-dribbble"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-behance"></i>
+        </a>
+      </div>
+      
+      <p class="copyright">&copy; 2025 Pramila Singh. All rights reserved.</p>
     </div>
   </footer>
 
